@@ -1,0 +1,40 @@
+# Python runtime artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local environments
+.venv/
+.venv*/
+.runtime/
+
+# Node dependencies
+node_modules/
+
+# PyInstaller output
+build/
+dist/
+
+# Runtime files
+.env
+startup_log.txt
+*.log
+*.pid
+.codex_*.log
+.codex_*.pid
+app/data/wind_farm.db
+
+# Generated local verification artifacts
+.codex_screenshots/
+output/
+test-results/
+
+# Local IDE state
+.idea/
+
+# Temporary backup files
+*.bak
+*.before_restore_original_model
+
+# browser automation cache
+.playwright-cli/

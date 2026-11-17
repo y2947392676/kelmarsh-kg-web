@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="kg-hero">
+    <p class="kg-eyebrow" data-i18n="st.eyebrow"></p>
+    <h1 data-i18n="st.title"></h1>
+</section>
+
+<section class="kg-grid kg-grid-2">
+    <div class="kg-panel"><h3 data-i18n="st.schema"></h3><div class="kg-chart kg-chart-tall" id="schemaChart"></div></div>
+    <div class="kg-panel"><h3 data-i18n="st.compSig"></h3><p class="kg-panel-sub" data-i18n="st.manualNote"></p><div class="kg-chart kg-chart-tall" id="compChart"></div></div>
+</section>
+
+<section class="kg-section kg-panel">
+    <h3 data-i18n="st.ids"></h3>
+    <div id="idTable"></div>
+</section>
+
+<section class="kg-section kg-panel">
+    <h3 data-i18n="st.components"></h3>
+    <div id="compTable"></div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/js/page_structure.js?v=1"></script>{% endblock %}

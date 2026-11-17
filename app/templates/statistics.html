@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="kg-hero">
+    <p class="kg-eyebrow" data-i18n="sa.eyebrow"></p>
+    <h1 data-i18n="sa.title"></h1>
+</section>
+
+<section class="kg-grid kg-grid-2">
+    <div class="kg-panel"><h3 data-i18n="sa.byMonth"></h3><div class="kg-chart" id="monthChart"></div></div>
+    <div class="kg-panel"><h3 data-i18n="sa.topCodes"></h3><div class="kg-chart kg-chart-tall" id="codeChart"></div></div>
+</section>
+
+<section class="kg-section kg-panel">
+    <h3 data-i18n="sa.signals"></h3>
+    <div id="signalTable"></div>
+</section>
+
+<section class="kg-section kg-panel">
+    <h3 data-i18n="sa.outOfScope"></h3>
+    <div id="rejectedTable"></div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/js/page_statistics.js?v=1"></script>{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block head %}
+<script type="importmap">
+{
+    "imports": {
+        "three": "/static/vendor/three/build/three.module.js",
+        "three/addons/": "/static/vendor/three/examples/jsm/"
+    }
+}
+</script>
+{% endblock %}
+{% block content %}
+<section class="kg-hero">
+    <p class="kg-eyebrow" data-i18n="tb.eyebrow"></p>
+    <h1>Kelmarsh {{ number }} <span class="kg-muted kg-small" id="turbineMeta"></span></h1>
+</section>
+
+<section class="kg-grid kg-grid-side">
+    <div class="kg-panel">
+        <h3 data-i18n="tb.view3d"></h3>
+        <div class="kg-viewer" id="viewer3d"></div>
+    </div>
+    <div class="kg-panel">
+        <h3><span data-i18n="tb.part"></span>: <span id="partName">–</span></h3>
+        <p class="kg-panel-sub" id="partHint" data-i18n="tb.pickPart"></p>
+        <div id="partSignals"></div>
+    </div>
+</section>
+
+<section class="kg-grid kg-grid-2 kg-section">
+    <div class="kg-panel">
+        <h3 data-i18n="tb.calendar"></h3>
+        <div class="kg-chart" id="calendarChart" style="height: 165px; transition: none;"></div>
+    </div>
+    <div class="kg-panel">
+        <h3><span data-i18n="tb.events"></span> <span class="kg-muted kg-small" id="eventCount"></span></h3>
+        <div class="kg-filter-row" id="statusFilter">
+            <button class="kg-chip is-active" data-status="" data-i18n="tb.filterAll"></button>
+            <button class="kg-chip" data-status="Stop">Stop</button>
+            <button class="kg-chip" data-status="Warning">Warning</button>
+            <span class="kg-chip" id="dayFilter" hidden></span>
+        </div>
+        <div id="eventTable" class="kg-clickable"></div>
+    </div>
+</section>
+
+<section class="kg-section kg-panel">
+    <h3 data-i18n="tb.window"></h3>
+    <p class="kg-note" id="windowNote" data-i18n="tb.pickEvent"></p>
+    <div id="windowCharts"></div>
+    <div id="windowTable"></div>
+</section>
+{% endblock %}
+{% block scripts %}
+<script>window.KG_TURBINE = {{ number }};</script>
+<script type="module" src="/static/js/page_turbine.js?v=2"></script>
+{% endblock %}

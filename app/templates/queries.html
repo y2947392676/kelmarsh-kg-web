@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="kg-hero">
+    <p class="kg-eyebrow" data-i18n="q.eyebrow"></p>
+    <h1 data-i18n="q.title"></h1>
+</section>
+
+<div class="kg-tabs" role="tablist">
+    <button class="kg-tab" data-tab="q1" data-i18n="q.tab1"></button>
+    <button class="kg-tab" data-tab="q2" data-i18n="q.tab2"></button>
+    <button class="kg-tab" data-tab="q3" data-i18n="q.tab3"></button>
+</div>
+
+<!-- Q1: turbine, loaded alarm day (suggested list), component (searchable) -->
+<section class="kg-panel" data-pane="q1" hidden>
+    <p class="kg-why" data-i18n="q.why1"></p>
+    <form class="kg-form" data-query="q1" autocomplete="off">
+        <label><span data-i18n="q.turbine"></span><select name="turbine" class="kg-turbine-select"></select></label>
+        <label><span data-i18n="q.day"></span><input name="day" list="q1Days" size="12" data-i18n-placeholder="q.dayPh"></label>
+        <label><span data-i18n="q.component"></span><input name="component" list="q1Components" size="26" data-i18n-placeholder="q.searchPh"></label>
+        <button class="kg-btn" type="submit" data-i18n="q.run"></button>
+    </form>
+    <datalist id="q1Days"></datalist>
+    <datalist id="q1Components"></datalist>
+    <p class="kg-muted kg-small" id="q1Hint"></p>
+</section>
+
+<!-- Q2: alarm code, searchable by number or message -->
+<section class="kg-panel" data-pane="q2" hidden>
+    <p class="kg-why" data-i18n="q.why2"></p>
+    <form class="kg-form" data-query="q2" autocomplete="off">
+        <label><span data-i18n="q.code"></span><input name="code" list="q2Codes" size="44" data-i18n-placeholder="q.codePh"></label>
+        <button class="kg-btn" type="submit" data-i18n="q.run"></button>
+    </form>
+    <datalist id="q2Codes"></datalist>
+    <p class="kg-muted kg-small" id="q2Hint"></p>
+</section>
+
+<!-- Q3: pick an alarm from a searchable list instead of typing its exact time -->
+<section class="kg-panel" data-pane="q3" hidden>
+    <p class="kg-why" data-i18n="q.why3"></p>
+    <form class="kg-form" data-query="q3" autocomplete="off">
+        <label><span data-i18n="q.turbine"></span><select name="turbine" class="kg-turbine-select"></select></label>
+        <label><span data-i18n="q.search"></span><input name="search" size="34" data-i18n-placeholder="q.eventPh"></label>
+        <label><span data-i18n="q.before"></span><input name="before_min" type="number" value="60" min="0" max="720"></label>
+        <label><span data-i18n="q.after"></span><input name="after_min" type="number" value="30" min="0" max="720"></label>
+        <button class="kg-btn" type="submit" data-i18n="q.run"></button>
+    </form>
+    <p class="kg-note" id="q3Selected"></p>
+    <div id="q3Events" class="kg-clickable"></div>
+</section>
+
+<section class="kg-section kg-panel" id="pathPanel">
+    <h3 data-i18n="q.path"></h3>
+    <div id="pathDiagram"></div>
+</section>
+
+<section class="kg-section kg-panel">
+    <h3><span data-i18n="q.result"></span> <span class="kg-muted kg-small" id="resultCount"></span></h3>
+    <p class="kg-note" id="queryNote"></p>
+    <div id="resultExtra"></div>
+    <div id="resultTable"></div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/js/page_queries.js?v=2"></script>{% endblock %}

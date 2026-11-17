@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="kg-hero">
+    <p class="kg-eyebrow" data-i18n="ov.eyebrow"></p>
+    <h1 data-i18n="ov.title"></h1>
+    <p data-i18n="ov.lead"></p>
+    <p class="kg-muted kg-small" style="margin-top: 8px;"><span data-i18n="ov.scope"></span>: <span id="scopeLine">…</span></p>
+</section>
+
+<section class="kg-kpis" id="kpis"></section>
+
+<section class="kg-grid kg-grid-2" id="turbineCards"></section>
+
+<section class="kg-section">
+    <div class="kg-panel">
+        <h3 data-i18n="ov.questions"></h3>
+        <div class="kg-grid kg-grid-3" style="margin-top: 10px;">
+            <div class="kg-panel kg-question"><p data-i18n="ov.q1"></p><a class="kg-link" href="/queries#q1" data-i18n="ov.run"></a></div>
+            <div class="kg-panel kg-question"><p data-i18n="ov.q2"></p><a class="kg-link" href="/queries#q2" data-i18n="ov.run"></a></div>
+            <div class="kg-panel kg-question"><p data-i18n="ov.q3"></p><a class="kg-link" href="/queries#q3" data-i18n="ov.run"></a></div>
+        </div>
+    </div>
+</section>
+
+<section class="kg-grid kg-grid-2 kg-section">
+    <div class="kg-panel"><h3 data-i18n="ov.nodeTypes"></h3><div class="kg-chart" id="nodeChart"></div></div>
+    <div class="kg-panel"><h3 data-i18n="ov.edgeTypes"></h3><div class="kg-chart" id="edgeChart"></div></div>
+</section>
+
+<section class="kg-section kg-panel">
+    <h3 data-i18n="ov.data"></h3>
+    <p class="kg-panel-sub" data-i18n="ov.dataText"></p>
+    <p class="kg-muted kg-small"><span data-i18n="ov.built"></span>: <span class="kg-mono" id="builtAt"></span></p>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/js/page_overview.js?v=1"></script>{% endblock %}

@@ -1,0 +1,17 @@
+# Web front end of the Kelmarsh Task 1 knowledge graph
+fastapi>=0.110
+uvicorn[standard]>=0.23
+jinja2>=3.1
+# needed to load the saved graph of the kelmarsh_kg project (same versions as that project)
+pandas>=2.2
+networkx>=3.3
+# tests
+httpx>=0.27
+pytest>=8
+
+# Optional: the research code in app/ml/scada_v2 and scripts/scada_v2 (not used by the web app)
+# scikit-learn>=1.5
+# scipy>=1.11
+# joblib>=1.4
+# Optional: desktop window for desktop_app.py
+# pywebview>=5

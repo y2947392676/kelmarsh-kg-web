@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="kg-hero">
+    <p class="kg-eyebrow" data-i18n="ck.eyebrow"></p>
+    <h1 data-i18n="ck.title"></h1>
+</section>
+
+<section class="kg-grid kg-grid-2">
+    <div class="kg-panel"><h3 data-i18n="ck.integrity"></h3><div id="integrity"></div></div>
+    <div class="kg-panel"><h3 data-i18n="ck.rebuild"></h3><div id="rebuild"></div></div>
+</section>
+
+<section class="kg-section kg-panel">
+    <h3 data-i18n="ck.sample"></h3>
+    <p class="kg-panel-sub" data-i18n="ck.manualText"></p>
+    <div class="kg-kpis" id="sampleKpis" style="grid-template-columns: repeat(3, minmax(0, 1fr));"></div>
+    <div id="sampleTable"></div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/js/page_checks.js?v=1"></script>{% endblock %}

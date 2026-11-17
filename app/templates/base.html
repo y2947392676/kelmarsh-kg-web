@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-i18n="title.{{ active }}">Kelmarsh 知识图谱</title>
+    <link rel="icon" href="/static/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/static/css/graphite-pro.css?v=211" />
+    <link rel="stylesheet" href="/static/css/kg.css?v=1" />
+    {% block head %}{% endblock %}
+</head>
+<body class="gp-page kg-page kg-page-{{ active }}">
+    <header class="gp-topbar">
+        <div class="kg-brand-row">
+            <a class="gp-brand" href="/">
+                <span class="gp-brand-logo">KG</span>
+                <span class="gp-brand-title" data-i18n="brand.title">Kelmarsh 风电场知识图谱</span>
+            </a>
+            <span class="gp-pill gp-pill-normal kg-real-badge" title="">
+                <span class="gp-pill-dot"></span><span data-i18n="brand.real">真实数据 · 每条事实注明来源行</span>
+            </span>
+        </div>
+
+        <nav class="gp-nav" aria-label="Primary navigation">
+            <a class="gp-nav-item {% if active == 'overview' %}is-active{% endif %}" href="/" data-i18n="nav.overview">概况</a>
+            {% for n in turbines %}
+            <a class="gp-nav-item {% if active == 'turbine' and number == n %}is-active{% endif %}" href="/turbine/{{ n }}">Kelmarsh {{ n }}</a>
+            {% endfor %}
+            <a class="gp-nav-item {% if active == 'structure' %}is-active{% endif %}" href="/structure" data-i18n="nav.structure">图谱结构</a>
+            <a class="gp-nav-item {% if active == 'queries' %}is-active{% endif %}" href="/queries" data-i18n="nav.queries">查询</a>
+            <a class="gp-nav-item {% if active == 'statistics' %}is-active{% endif %}" href="/statistics" data-i18n="nav.statistics">统计</a>
+            <a class="gp-nav-item {% if active == 'checks' %}is-active{% endif %}" href="/checks" data-i18n="nav.checks">数据检查</a>
+        </nav>
+
+        <div class="gp-lang-toggle" role="group" aria-label="Language">
+            <button type="button" class="gp-lang-btn" data-language-choice="zh">中文</button>
+            <button type="button" class="gp-lang-btn" data-language-choice="en">EN</button>
+        </div>
+    </header>
+
+    <div id="kgLoading" class="kg-loading" hidden>
+        <span class="kg-spinner"></span><span data-i18n="common.loadingGraph">正在加载知识图谱（约 10 秒，只在启动后第一次）…</span>
+    </div>
+    <div id="kgError" class="kg-error" hidden></div>
+
+    <main class="kg-main">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- evidence drawer: the cited line of the original CSV file -->
+    <div class="gp-alarm-drawer-overlay kg-drawer-overlay" id="evidenceOverlay"></div>
+    <aside class="gp-alarm-drawer kg-drawer" id="evidenceDrawer" aria-hidden="true">
+        <div class="gp-alarm-drawer-header">
+            <div>
+                <div class="gp-alarm-drawer-title" data-i18n="evidence.title">原文证据</div>
+                <div class="kg-drawer-sub" data-i18n="evidence.sub">图谱事实所引用的原始 CSV 行</div>
+            </div>
+            <button type="button" class="gp-alarm-drawer-close" id="evidenceClose" aria-label="Close">×</button>
+        </div>
+        <div class="kg-drawer-body" id="evidenceBody"></div>
+    </aside>
+
+    <script src="/static/vendor/echarts/echarts.min.js"></script>
+    <script src="/static/js/kg_i18n.js?v=2"></script>
+    <script src="/static/js/kg_app.js?v=2"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>
