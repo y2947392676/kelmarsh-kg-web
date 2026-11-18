@@ -29,12 +29,31 @@ Open http://127.0.0.1:8000 .
 - No raw data are needed: on the first start the graph is rebuilt from the export committed
   in `kelmarsh-wind-farm-kg/output/` (about 10 s, then cached). After that, pages and queries
   answer within a second.
-- The course project may also be in another folder: set `KELMARSH_KG_DIR` to it.
-- `PORT=8765` chooses another port, `UVICORN_RELOAD=false` turns off auto-reload. Stop with Ctrl+C.
+- Stop the app with **Ctrl+C** in the same terminal.
 - The **evidence panel** (the cited line of the original CSV file) needs the raw Kelmarsh files.
-  Download `Kelmarsh_SCADA_2021_4456.zip` from https://zenodo.org/records/16807551 and unzip it to
-  `kelmarsh-wind-farm-kg/raw_data/Kelmarsh_SCADA_2021_4456/` (see that README). Without them,
-  the panel says that the file is missing; everything else works.
+  Download `Kelmarsh_SCADA_2021_4456.zip` (467 MB) from https://zenodo.org/records/16807551 and
+  unzip it to `kelmarsh-wind-farm-kg/raw_data/Kelmarsh_SCADA_2021_4456/` (see that README).
+  Without them, the panel says that the file is missing; everything else works.
+
+**Settings** (set them in the same terminal before `python main.py`):
+
+| Setting | Windows PowerShell | Windows cmd | macOS / Linux |
+|---|---|---|---|
+| Another port (default 8000) | `$env:PORT="8765"` | `set PORT=8765` | `export PORT=8765` |
+| Turn off auto-reload | `$env:UVICORN_RELOAD="false"` | `set UVICORN_RELOAD=false` | `export UVICORN_RELOAD=false` |
+| Course project in another folder | `$env:KELMARSH_KG_DIR="D:\path\to\kelmarsh-wind-farm-kg"` | `set KELMARSH_KG_DIR=D:\path\to\kelmarsh-wind-farm-kg` | `export KELMARSH_KG_DIR=/path/to/kelmarsh-wind-farm-kg` |
+
+**If it does not run**
+
+- `python` or `pip` is not found, or a module such as `fastapi` is missing: the terminal is not using
+  the Python that has the packages. Use the Anaconda Prompt, or call that Python directly, e.g.
+  `D:\anaconda3\python.exe main.py`.
+- The page shows `503 ... kelmarsh_kg not found`: the course project is not next to this folder.
+  Clone it into the same parent folder, or set `KELMARSH_KG_DIR` (table above).
+- Port 8000 is busy (e.g. another copy is still running): the app starts on the next free port and
+  prints the address to open, e.g. `starting on http://127.0.0.1:8001 instead`.
+- The first page shows "Loading the knowledge graph": wait about 10 seconds; this happens only once
+  after each start.
 
 ## 2. Pages / 页面
 
